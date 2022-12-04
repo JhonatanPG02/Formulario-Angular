@@ -1,0 +1,127 @@
+<div class="containerTotal row g-3">
+  <div class="col">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <h3 class="text-center text-primary">REGISTRO DE ALUMNOS</h3>
+      <div class="col-auto mb-3">
+        <label for="documentNumber" class="form-label text-primary" >Documento:</label>
+        <input
+        type="text"
+        class="form-control"
+        [ngClass]="form.controls['documentNumber'].errors && form.controls['documentNumber'].touched ? 'error' : '' "
+        id="documentNumber"
+        formControlName="documentNumber"
+        [placeholder]="'Ingrese su número de documento'"
+        >
+        <small *ngIf="form.controls['documentNumber'].errors?.['required'] && form.controls['documentNumber'].touched" class="text-danger">
+          El documento es requerido
+        </small>
+        <small *ngIf="form.controls['documentNumber'].errors?.['pattern'] && form.controls['documentNumber'].touched" class="text-danger">
+          El documento es inválido
+        </small>
+        <small *ngIf="(form.controls['documentNumber'].errors?.['minlength'] || form.controls['documentNumber'].errors?.['maxlength'])
+        && form.controls['documentNumber'].touched" class="text-danger">
+          El documento debe tener 8 digitos
+        </small>
+      </div>
+      <div class="row g-3">
+        <div class="col-6 mb-3">
+          <label for="name" class="form-label text-primary" >Nombre:</label>
+          <input
+          type="text"
+          class="form-control"
+          [ngClass]="form.controls['name'].errors && form.controls['name'].touched ? 'error' : '' "
+          id="name"
+          formControlName="name"
+          [placeholder]="'Ingrese su nombre'"
+          >
+          <small *ngIf="form.controls['name'].errors?.['required'] && form.controls['name'].touched" class="text-danger">
+            El nombre es requerido
+          </small>
+          <small *ngIf="form.controls['name'].errors?.['pattern'] && form.controls['name'].touched" class="text-danger">
+            El nombre es inválido
+          </small>
+          <small *ngIf="form.controls['name'].errors?.['minlength'] && form.controls['name'].touched" class="text-danger">
+            El nombre debe ser mayor a 3 letras
+          </small>
+        </div>
+        <div class="col-6 mb-3">
+          <label for="lastName" class="form-label text-primary" >Apellido:</label>
+          <input
+          type="text"
+          class="form-control"
+          [ngClass]="form.controls['lastName'].errors && form.controls['lastName'].touched ? 'error' : '' "
+          id="lastName"
+          formControlName="lastName"
+          [placeholder]="'Ingrese sus apellidos'"
+          >
+          <small *ngIf="form.controls['lastName'].errors?.['required'] && form.controls['lastName'].touched" class="text-danger">
+            El Apellido es requerido
+          </small>
+          <small *ngIf="form.controls['lastName'].errors?.['pattern'] && form.controls['lastName'].touched" class="text-danger">
+            El Apellido es inválido
+          </small>
+          <small *ngIf="form.controls['lastName'].errors?.['minlength'] && form.controls['lastName'].touched" class="text-danger">
+            El Apellido debe ser mayor a 3 letras
+          </small>
+        </div>
+      </div>
+      <div class="row g-3">
+        <div class="col-6 mb-3">
+          <label for="course" class="form-label text-primary" >Curso:</label>
+          <select
+          class="form-select"
+          [ngClass]="form.controls['course'].errors && form.controls['course'].touched ? 'error' : '' "
+          id="course"
+          formControlName="course"
+          >
+            <option value="" disabled selected hidden>Seleccione</option>
+            <option>Javascript</option>
+            <option>Angular</option>
+            <option>React</option>
+          </select>
+          <small *ngIf="form.controls['course'].errors?.['required'] && form.controls['course'].touched" class="text-danger">
+            El curso es requerido
+          </small>
+        </div>
+        <div class="col-6 mb-3">
+          <label for="turn" class="form-label text-primary" >Turno:</label>
+          <select
+          class="form-select"
+          [ngClass]="form.controls['turn'].errors && form.controls['turn'].touched ? 'error' : '' "
+          id="turn"
+          formControlName="turn"
+          >
+            <option value="" disabled selected hidden>Seleccione</option>
+            <option>Mañana</option>
+            <option>Tarde</option>
+            <option>Noche</option>
+          </select>
+          <small *ngIf="form.controls['turn'].errors?.['required'] && form.controls['turn'].touched" class="text-danger">
+            El turno es requerido
+          </small>
+        </div>
+      </div>
+      <div class="col-auto mb-3">
+        <label for="email" class="form-label text-primary" >Email:</label>
+        <input
+        type="text"
+        class="form-control"
+        [ngClass]="form.controls['email'].errors && form.controls['email'].touched ? 'error' : '' "
+        id="email"
+        formControlName="email"
+        [placeholder]="'Ingrese su email'"
+        >
+        <small *ngIf="form.controls['email'].errors?.['required'] && form.controls['email'].touched" class="text-danger">
+          El email es requerido
+        </small>
+        <small *ngIf="form.controls['email'].errors?.['email'] && form.controls['email'].touched" class="text-danger">
+          El documento es inválido
+        </small>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg" [disabled]="form.invalid">Registrar</button>
+    </form>
+  </div>
+  <div class="col">
+    <app-students [students]="listStudents"></app-students>
+  </div>
+</div>

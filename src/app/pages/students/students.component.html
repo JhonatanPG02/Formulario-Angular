@@ -1,0 +1,21 @@
+<div class="containerTotal">
+  <h3 class="text-success text-center">ALUMNOS REGISTRADOS</h3>
+  <table class="table table-success">
+    <thead>
+      <tr class="table-dark">
+        <th scope="col">Documento</th>
+        <th scope="col">Nombre y Apellidos</th>
+        <th scope="col">Curso</th>
+        <th scope="col">Turno</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <th>{{student.documentNumber}}</th>
+        <th>{{student.name}} {{student.lastName}}</th>
+        <td>{{student.course}}</td>
+        <td>{{student.turn}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

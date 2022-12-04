@@ -1,0 +1,10 @@
+
+.containerTotal {
+  width: 90%;
+  margin-top: 3rem;
+  margin-left: 3rem;
+}
+
+.error {
+  border: 1px solid red;
+}
